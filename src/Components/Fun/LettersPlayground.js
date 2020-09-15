@@ -8,22 +8,28 @@ const LettersPlayGround = () => {
   useEffect(
     () => {
       playGroundRef.current.focus();
-    }, []
+      document.addEventListener("keydown", function (inEvent) {
+        funModehandleKeyDown(inEvent)
+      });
+      return () => {
+        document.removeEventListener("keydown")
+      }
+    }, [funModehandleKeyDown]
   );
 
   return (
     <>
-      <input type="text" onKeyDown={funModehandleKeyDown}
+      <div
         tabIndex="-1"
+        className="playground"
         id="playGround"
         ref={playGroundRef}
         style={{
-          fontSize: '0.5rem',
-          maxWidth: '1vw'
+          fontSize: 40
         }}
       >
-      </input>
-      { FunImage()}
+        {FunImage()}
+      </div>
     </>
   )
 }
