@@ -1,23 +1,26 @@
-import React, { useState, useCallback } from 'react';
-import PlayGround from './Components/Playground'
-import FunModeButton from './Components/FunModeButton'
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
+import LettersPlayground from './Components/Fun/LettersPlayground'
+import TextEditor from './Components/TextEditor/TextEditor'
 import './App.css';
 
 function App() {
-  const [isTypeMode, setTypeMode] = useState(true)
-
-  const handleOnClick = useCallback(() => {
-    setTypeMode(!isTypeMode)
-  }, [setTypeMode, isTypeMode])
-
   return (
-    <div className="App">
-      <FunModeButton onClick={handleOnClick} isTypeMode={isTypeMode} />
-      <PlayGround
-        isTypeMode={isTypeMode}
-        fontSize={80}
-      />
-    </div>
+    <Router>
+      <div className="App">
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/text" component={TextEditor} />
+          <Route path={"/"} component={LettersPlayground} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
