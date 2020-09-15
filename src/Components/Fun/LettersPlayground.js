@@ -12,17 +12,19 @@ const LettersPlayGround = () => {
   );
 
   return (
-    <div onKeyDown={funModehandleKeyDown}
-      tabIndex="-1"
-      className="playground"
-      id="playGround"
-      ref={playGroundRef}
-      style={{
-        fontSize: 40
-      }}
-    >
-      {FunImage()}
-    </div>
+    <>
+      <input type="text" onKeyDown={funModehandleKeyDown}
+        tabIndex="-1"
+        id="playGround"
+        ref={playGroundRef}
+        style={{
+          fontSize: '0.5rem',
+          maxWidth: '1vw'
+        }}
+      >
+      </input>
+      { FunImage()}
+    </>
   )
 }
 
